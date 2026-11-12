@@ -90,3 +90,4 @@ The books are saved in `books.json`, so they are still there the next time you s
 ### Search & Remove
 - Choose `3` to search for books by title or author.
 - Choose `4` to remove a book by its ID.
+- Note: Search is case-insensitive.
