@@ -38,7 +38,7 @@ public class Main {
 
     public static void printBanner() {
         System.out.println("========================================");
-        System.out.println("            LIBRARY TRACKER             ");
+        System.out.println("            SMART LIBRARY MANAGER V2             ");
         System.out.println("========================================");
     }
 
