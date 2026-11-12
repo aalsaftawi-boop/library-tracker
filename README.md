@@ -68,3 +68,21 @@ library-tracker/
 5. A Pull Request is opened and linked to its issue with `Closes #N`.
 6. Each Pull Request goes through a review step, and requested changes are fixed before merging.
 7. After approval the Pull Request is merged and the feature branch is deleted.
+## Usage example
+
+1. Compile and run the program (see the commands above).
+2. Choose `1` to add a book, then enter an ID, a title and an author.
+3. Choose `2` to list all stored books.
+
+Example of adding a book and listing it:
+
+```
+Book ID (positive number): 1
+Title: Clean Code
+Author: Robert Martin
+Book added.
+Books (1):
+  [1] Clean Code - Robert Martin
+```
+
+The books are saved in `books.json`, so they are still there the next time you start the program.
