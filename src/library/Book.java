@@ -42,3 +42,4 @@ public class Book {
         return String.format("[%d] %s - %s", id, title, author);
     }
 }
+// Rebase demo utility note
