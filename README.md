@@ -1,94 +1,59 @@
-# Library Tracker
+# Library Tracker CLI
 
-A small console application written in Java for managing a list of books.
-It was built for **Software Engineering – Assignment 2 (Team Git: GitHub Flow, Reviews & Recovery)**.
-The code is intentionally simple: the goal of the project is to practise teamwork with Git and GitHub.
-
-## Author
-
-This is an individual submission.
-
-| Role | Full name | GitHub username |
-|------|-----------|-----------------|
-| Student (individual submission) | Ahmad Mohammad Asaad Al-Saftawi | `aalsaftawi-boop` |
+A clean, lightweight Java command-line application for managing a personal or small library collection. All book records are automatically persisted to a local `books.json` file with zero external dependencies.
 
 ## Features
+- **Add Books:** Register new books with a unique positive ID, title, and author.
+- **List Books:** Display all saved books in a formatted list.
+- **Search Books:** Perform case-insensitive partial searches by book title or author name.
+- **Remove Books:** Delete a book record safely using its unique ID.
+- **Automatic Recovery:** Backs up corrupted JSON data automatically (`books.json.bak`) without crashing.
 
-- Add a book (ID, title, author)
-- List all books
-- Search books by title or author (not case-sensitive)
-- Remove a book by ID
-- Data is saved automatically to `books.json` and loaded when the program starts
+## Prerequisites
+- **Java Development Kit (JDK):** Version 17 or higher.
+- **Git:** For cloning and version control.
 
-Input is validated: IDs must be positive numbers and unique, title and author cannot be empty,
-and a missing or damaged `books.json` is handled safely.
+## Setup & Run Instructions
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/aalsaftawi-boop/library-tracker.git
+   cd library-tracker
+   ```
+2. **Compile the Java source files:**
+   ```bash
+   javac src/library/*.java
+   ```
+3. **Run the application:**
+   ```bash
+   java -cp src library.Main
+   ```
 
-## Requirements
+## Usage Example
+```text
+========================================
+      LIBRARY TRACKER - V2 SMART EDITION
+========================================
 
-- Java JDK 17 or newer (`javac -version` to check)
-- No external libraries
-
-## How to compile and run
-
-From the project root folder:
-
-```bash
-# Compile
-javac -d out src/library/*.java
-
-# Run
-java -cp out library.Main
-```
-
-The program creates or updates `books.json` in the folder you run it from.
-
-## Project structure
-
-```
-library-tracker/
-├── src/library/
-│   ├── Book.java            # One book (id, title, author) with validation
-│   ├── BookRepository.java  # Reads/writes books.json
-│   ├── LibraryService.java  # Add, list, search, remove logic
-│   └── Main.java            # Menu and user input
-├── books.json               # Saved data
-├── .gitignore
-└── README.md
-```
-
-## Git workflow (GitHub Flow)
-
-1. `main` always contains working code and is never pushed to directly.
-2. Each feature starts with a GitHub Issue.
-3. A feature branch is created from `main` for each feature:
-   - `feature/add-list-books` (add and list books)
-   - `feature/search-remove` (search and remove books)
-4. Work is committed in small steps using [Conventional Commits](https://www.conventionalcommits.org/),
-   for example `feat(books): add book creation`.
-5. A Pull Request is opened and linked to its issue with `Closes #N`.
-6. Each Pull Request goes through a review step, and requested changes are fixed before merging.
-7. After approval the Pull Request is merged and the feature branch is deleted.
-## Usage example
-
-1. Compile and run the program (see the commands above).
-2. Choose `1` to add a book, then enter an ID, a title and an author.
-3. Choose `2` to list all stored books.
-
-Example of adding a book and listing it:
-
-```
-Book ID (positive number): 1
+1. Add a book
+2. List all books
+3. Search books
+4. Remove a book
+5. Exit
+Choose an option (1-5): 1
+Book ID (positive number): 101
 Title: Clean Code
-Author: Robert Martin
+Author: Robert C. Martin
 Book added.
+
+Choose an option (1-5): 2
 Books (1):
-  [1] Clean Code - Robert Martin
+  [101] Clean Code - Robert C. Martin
+
+Choose an option (1-5): 3
+Search by title or author: clean
+Matching books (1):
+  [101] Clean Code - Robert C. Martin
 ```
 
-The books are saved in `books.json`, so they are still there the next time you start the program.
-
-### Search & Remove
-- Choose `3` to search for books by title or author.
-- Choose `4` to remove a book by its ID.
-- Note: Search is case-insensitive.
-- Updated library banner to V2 Smart Edition.
+## Contributors
+See [CONTRIBUTORS.md](CONTRIBUTORS.md) for project contributor details.
