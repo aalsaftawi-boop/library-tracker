@@ -1,0 +1,25 @@
+# Secrets and environment files
+.env
+
+# Python cache (required by the assignment)
+__pycache__/
+*.pyc
+
+# Java build output
+out/
+*.class
+
+# Backup of a damaged data file (created by the app)
+books.json.bak
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
