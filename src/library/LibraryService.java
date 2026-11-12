@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Contains the library rules: add and list books.
+ * Contains the library rules: add, list, search, and remove books.
  * Every change is saved to the repository (books.json) immediately.
  */
 public class LibraryService {
@@ -18,23 +18,44 @@ public class LibraryService {
         this.books = new ArrayList<>(initialBooks);
     }
 
-    /**
-     * Adds a new book.
-     *
-     * @throws IllegalArgumentException if the data is invalid or the ID already exists
-     * @throws IOException              if saving fails
-     */
+    /** Adds a new book. */
     public void addBook(int id, String title, String author) throws IOException {
         if (findById(id) != null) {
             throw new IllegalArgumentException("A book with ID " + id + " already exists.");
         }
-        books.add(new Book(id, title, author)); // validates the fields
+        books.add(new Book(id, title, author));
         repository.save(books);
     }
 
-    /** Returns a copy of all books (the internal list is never exposed). */
+    /** Returns a copy of all books. */
     public List<Book> listBooks() {
         return new ArrayList<>(books);
+    }
+
+    /** Searches books by title or author (case-insensitive). */
+    public List<Book> searchBooks(String query) {
+        if (query == null || query.isBlank()) {
+            return new ArrayList<>();
+        }
+        String lower = query.trim().toLowerCase();
+        List<Book> matches = new ArrayList<>();
+        for (Book b : books) {
+            if (b.getTitle().toLowerCase().contains(lower) || b.getAuthor().toLowerCase().contains(lower)) {
+                matches.add(b);
+            }
+        }
+        return matches;
+    }
+
+    /** Removes a book by its ID. Returns true if removed, false if not found. */
+    public boolean removeBook(int id) throws IOException {
+        Book target = findById(id);
+        if (target == null) {
+            return false;
+        }
+        books.remove(target);
+        repository.save(books);
+        return true;
     }
 
     private Book findById(int id) {
